@@ -159,7 +159,7 @@ class SignInPage extends StatelessWidget {
                           children: [
                             // load icon google
                             SvgPicture.asset(
-                              'assets/img_google_icon.svg',
+                              'assets/ic_google_icon.svg',
                               width: 25,
                             ),
                             const SizedBox(
