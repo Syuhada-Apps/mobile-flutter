@@ -1,33 +1,30 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:syuhada_apps/shared/theme.dart';
-import 'package:syuhada_apps/ui/pages/sign_up_pages.dart';
 import 'package:syuhada_apps/ui/widgets/buttons.dart';
 
-// atur page dengan stateless karena sederhana page
-class SignInPage extends StatelessWidget {
-  const SignInPage({super.key});
+class SignUpPage extends StatelessWidget {
+  const SignUpPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: whiteColor,
-      // buat layout listview agar mudah atur vertikal fitur
       body: ListView(
         padding:
-            const EdgeInsets.only(left: 60, right: 60, top: 80, bottom: 48),
+            const EdgeInsets.only(left: 60, right: 60, top: 120, bottom: 48),
         children: [
           // header gambar
           SvgPicture.asset(
-            'assets/img_login.svg',
-            width: 350,
+            'assets/img_signup.svg',
+            width: 385,
           ),
           const SizedBox(
             height: 50,
           ),
           Text(
             // teks header
-            'Masuk',
+            'Buat Akun',
             style: blackHeaderStyle.copyWith(fontSize: 50, fontWeight: bold),
             textAlign: TextAlign.center,
           ),
@@ -36,7 +33,7 @@ class SignInPage extends StatelessWidget {
           ),
           // teks deskripsi
           Text(
-            'dan tetap terhubung bersama kami.',
+            'and discover new experience here.',
             style: blackBodyStyle.copyWith(fontSize: 25, fontWeight: regular),
             textAlign: TextAlign.center,
           ),
@@ -48,6 +45,53 @@ class SignInPage extends StatelessWidget {
             color: whiteColor,
             child: Column(
               children: [
+                //NOTE: Nama Lengkap input
+                TextFormField(
+                  style: const TextStyle(
+                      fontSize: 25.0, height: 2, color: Colors.black),
+                  decoration: InputDecoration(
+                      // labelText: 'Nama Lengkap',
+                      // labelStyle:
+                      //     const TextStyle(color: Colors.black, fontSize: 15),
+                      enabledBorder: UnderlineInputBorder(
+                          borderRadius: BorderRadius.circular(15)),
+                      focusedBorder: UnderlineInputBorder(
+                          borderRadius: BorderRadius.circular(15)),
+                      contentPadding:
+                          const EdgeInsets.only(left: 40, bottom: 10, top: 8),
+                      filled: true,
+                      fillColor: greenLightColor,
+                      hintText: 'Nama Lengkap'),
+                  // scrollPadding: EdgeInsets.all(8.0),
+                  // cursorRadius: Radius.circular(15),
+                ),
+                const SizedBox(
+                  height: 25,
+                ),
+                //NOTE: email input
+                Form(
+                  child: TextFormField(
+                    // validator: (value) => EmailValidator.validate(value)
+                    //     ? null
+                    //     : "Please enter a valid email",
+                    style: const TextStyle(
+                        fontSize: 25.0, height: 2, color: Colors.black),
+                    decoration: InputDecoration(
+                        enabledBorder: UnderlineInputBorder(
+                            borderRadius: BorderRadius.circular(15)),
+                        focusedBorder: UnderlineInputBorder(
+                            borderRadius: BorderRadius.circular(15)),
+                        contentPadding:
+                            const EdgeInsets.only(left: 40, bottom: 10, top: 8),
+                        filled: true,
+                        fillColor: greenLightColor,
+                        hintText: 'E-mail'),
+                  ),
+                ),
+
+                const SizedBox(
+                  height: 25,
+                ),
                 //NOTE: email input
                 TextFormField(
                   style: const TextStyle(
@@ -61,7 +105,47 @@ class SignInPage extends StatelessWidget {
                           const EdgeInsets.only(left: 40, bottom: 10, top: 8),
                       filled: true,
                       fillColor: greenLightColor,
-                      hintText: 'E-mail'),
+                      hintText: 'Nomor Telepon'),
+                  // scrollPadding: EdgeInsets.all(8.0),
+                  // cursorRadius: Radius.circular(15),
+                ),
+                const SizedBox(
+                  height: 25,
+                ),
+                //NOTE: email input
+                TextFormField(
+                  style: const TextStyle(
+                      fontSize: 25.0, height: 2, color: Colors.black),
+                  decoration: InputDecoration(
+                      enabledBorder: UnderlineInputBorder(
+                          borderRadius: BorderRadius.circular(15)),
+                      focusedBorder: UnderlineInputBorder(
+                          borderRadius: BorderRadius.circular(15)),
+                      contentPadding:
+                          const EdgeInsets.only(left: 40, bottom: 10, top: 8),
+                      filled: true,
+                      fillColor: greenLightColor,
+                      hintText: 'Alamat'),
+                  // scrollPadding: EdgeInsets.all(8.0),
+                  // cursorRadius: Radius.circular(15),
+                ),
+                const SizedBox(
+                  height: 25,
+                ),
+                //NOTE: email input
+                TextFormField(
+                  style: const TextStyle(
+                      fontSize: 25.0, height: 2, color: Colors.black),
+                  decoration: InputDecoration(
+                      enabledBorder: UnderlineInputBorder(
+                          borderRadius: BorderRadius.circular(15)),
+                      focusedBorder: UnderlineInputBorder(
+                          borderRadius: BorderRadius.circular(15)),
+                      contentPadding:
+                          const EdgeInsets.only(left: 40, bottom: 10, top: 8),
+                      filled: true,
+                      fillColor: greenLightColor,
+                      hintText: 'Jenis Kelamin'),
                   // scrollPadding: EdgeInsets.all(8.0),
                   // cursorRadius: Radius.circular(15),
                 ),
@@ -87,6 +171,26 @@ class SignInPage extends StatelessWidget {
                   // cursorRadius: Radius.circular(15),
                 ),
                 const SizedBox(
+                  height: 25,
+                ),
+                TextFormField(
+                  style: const TextStyle(
+                      fontSize: 25.0, height: 2, color: Colors.black),
+                  decoration: InputDecoration(
+                      enabledBorder: UnderlineInputBorder(
+                          borderRadius: BorderRadius.circular(15)),
+                      focusedBorder: UnderlineInputBorder(
+                          borderRadius: BorderRadius.circular(15)),
+                      contentPadding:
+                          const EdgeInsets.only(left: 40, bottom: 10, top: 8),
+                      filled: true,
+                      fillColor: greenLightColor,
+                      hintText: 'Re-Type Password'),
+                  obscureText: true,
+                  // scrollPadding: EdgeInsets.all(8.0),
+                  // cursorRadius: Radius.circular(15),
+                ),
+                const SizedBox(
                   height: 15,
                 ),
                 // teks untuk lupa kata sandi
@@ -102,10 +206,8 @@ class SignInPage extends StatelessWidget {
                 const SizedBox(
                   height: 50,
                 ),
-                // buat button dengan CustomFilledButton
-                const CustomFilledButton(
-                  title: "Masuk",
-                ),
+                // buat button dengan sizedbox
+                const CustomFilledButton(title: 'Masuk'),
                 const SizedBox(
                   height: 50,
                 ),
@@ -172,16 +274,6 @@ class SignInPage extends StatelessWidget {
                     onPressed: () {
                       // masuk ke menu utama
                       // setelah validasi data
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const SignUpPage(),
-                        ),
-                      );
-                      // Navigator.push(
-                      //           context,
-                      //           MaterialPageRoute(
-                      //             builder: (context) => const SignInPage(),
                     },
                     child: Text(
                       'Belum punya akun? Daftar Disini',
