@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:syuhada_apps/shared/theme.dart';
+import 'package:syuhada_apps/ui/pages/sign_in_page.dart';
 import 'package:syuhada_apps/ui/widgets/buttons.dart';
 
 class SignUpPage extends StatelessWidget {
@@ -196,10 +197,10 @@ class SignUpPage extends StatelessWidget {
                 // teks untuk lupa kata sandi
                 // gunakan align untuk atur posisi teks
                 Align(
-                  alignment: Alignment.centerRight,
+                  alignment: Alignment.centerLeft,
                   child: Text(
-                    'Lupa kata sandi? Klik Disini',
-                    style: blackBodyStyle.copyWith(fontSize: 20),
+                    'Dengan mendaftar mematuhi, Kebijakan Privasi',
+                    style: blackBodyStyle.copyWith(fontSize: 17),
                   ),
                 ),
 
@@ -212,75 +213,18 @@ class SignUpPage extends StatelessWidget {
                   height: 50,
                 ),
                 // buat pembatas dengan container
-                Container(
-                  width: 200,
-                  height: 2.5,
-                  margin: const EdgeInsets.only(right: 10),
-                  decoration: BoxDecoration(
-                      // shape rectangle agar memanjang
-                      shape: BoxShape.rectangle,
-                      color: greenDarkColor),
-                ),
-                const SizedBox(
-                  height: 50,
-                ),
-                // buat button untuk login dengan google
-                SizedBox(
-                  height: 70,
-                  width: double.infinity,
-                  child: TextButton(
-                    onPressed: () {
-                      // akan mengarahkan ke pop up google account
-                    },
-                    style: OutlinedButton.styleFrom(
-                      side: BorderSide(width: 2, color: greenDarkColor),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15)),
-                    ),
-                    // buat row (ke samping) untuk mensejajarkan icon dan teks
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        // buat row (ke samping) untuk mensejajarkan icon dan teks
-                        Row(
-                          children: [
-                            // load icon google
-                            SvgPicture.asset(
-                              'assets/ic_google_icon.svg',
-                              width: 25,
-                            ),
-                            const SizedBox(
-                              width: 20,
-                            ),
-                            // load teks
-                            Text(
-                              'Login With Google',
-                              style: greyBodyStyle.copyWith(fontSize: 25),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                SizedBox(
-                  height: 50,
-                  // gunakan infinty agar responsive
-                  width: double.infinity,
-                  child: TextButton(
-                    onPressed: () {
-                      // masuk ke menu utama
-                      // setelah validasi data
-                    },
-                    child: Text(
-                      'Belum punya akun? Daftar Disini',
-                      style: greyBodyStyle.copyWith(fontSize: 20),
-                    ),
-                  ),
-                ),
+
+                CustomTextButton(
+                  title: 'Sudah punya akun? Masuk disini',
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SignInPage(),
+                      ),
+                    );
+                  },
+                )
               ],
             ),
           )

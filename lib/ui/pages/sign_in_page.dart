@@ -164,31 +164,18 @@ class SignInPage extends StatelessWidget {
                 const SizedBox(
                   height: 30,
                 ),
-                SizedBox(
-                  height: 50,
-                  // gunakan infinty agar responsive
-                  width: double.infinity,
-                  child: TextButton(
-                    onPressed: () {
-                      // masuk ke menu utama
-                      // setelah validasi data
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const SignUpPage(),
-                        ),
-                      );
-                      // Navigator.push(
-                      //           context,
-                      //           MaterialPageRoute(
-                      //             builder: (context) => const SignInPage(),
-                    },
-                    child: Text(
-                      'Belum punya akun? Daftar Disini',
-                      style: greyBodyStyle.copyWith(fontSize: 20),
-                    ),
-                  ),
-                ),
+                // buat button dengan custom text button
+                CustomTextButton(
+                  title: 'Belum punya akun? Daftar disini',
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SignUpPage(),
+                      ),
+                    );
+                  },
+                )
               ],
             ),
           )
