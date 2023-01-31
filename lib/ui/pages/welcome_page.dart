@@ -38,19 +38,41 @@ class _WelcomePageState extends State<WelcomePage> {
         backgroundColor: welcomeColor,
         //tambahkan gambar svg
         body: Center(
-            child: SvgPicture.asset(
-          'assets/img_logo.svg',
-          height: 100,
-          width: 250,
-        )
-            // Container(
-            //   width: 194,
-            //   height: 72,
-
-            //   decoration: const BoxDecoration(
-            //       image:
-            //           DecorationImage(image: AssetImage('assets/img_logo.png'))),
-            // ),
-            ));
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 450,
+              ),
+              SvgPicture.asset(
+                'assets/img_logo.svg',
+                height: 100,
+                width: 250,
+              ),
+              const SizedBox(
+                height: 430,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'assets/img_yasma.png',
+                    height: 40,
+                  ),
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  SvgPicture.asset(
+                    'assets/img_serambi.svg',
+                    height: 40,
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+              const Text('2023 \u00a9 Masjid Syuhada Yogyakarta')
+            ],
+          ),
+        ));
   }
 }

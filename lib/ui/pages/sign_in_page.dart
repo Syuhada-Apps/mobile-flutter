@@ -87,20 +87,30 @@ class SignInPage extends StatelessWidget {
                   // cursorRadius: Radius.circular(15),
                 ),
                 const SizedBox(
-                  height: 15,
+                  height: 10,
                 ),
                 // teks untuk lupa kata sandi
                 // gunakan align untuk atur posisi teks
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: Text(
-                    'Lupa kata sandi? Klik Disini',
-                    style: blackBodyStyle.copyWith(fontSize: 20),
+                SizedBox(
+                  height: 40,
+                  // gunakan infinty agar responsive
+                  width: double.infinity,
+                  child: TextButton(
+                    onPressed: () {},
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: Text(
+                        'Lupa kata sandi?',
+                        textAlign: TextAlign.end,
+                        softWrap: false,
+                        style: greyBodyStyle.copyWith(fontSize: 18),
+                      ),
+                    ),
                   ),
                 ),
 
                 const SizedBox(
-                  height: 50,
+                  height: 30,
                 ),
                 // buat button dengan CustomFilledButton
                 const CustomFilledButton(
