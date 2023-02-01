@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:syuhada_apps/shared/theme.dart';
-import 'package:syuhada_apps/ui/pages/sign_up_pages.dart';
 import 'package:syuhada_apps/ui/widgets/buttons.dart';
 
 // atur page dengan stateless karena sederhana page
-class SignInPage extends StatelessWidget {
+class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
 
+  @override
+  State<SignInPage> createState() => _SignInPageState();
+}
+
+class _SignInPageState extends State<SignInPage> {
+  bool _obscureText = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,6 +55,13 @@ class SignInPage extends StatelessWidget {
               children: [
                 //NOTE: email input
                 TextFormField(
+                  keyboardType: TextInputType.emailAddress,
+                  validator: (value) {
+                    if (!value!.contains('@')) {
+                      return 'Invalid email';
+                    }
+                    return null;
+                  },
                   style: const TextStyle(
                       fontSize: 25.0, height: 2, color: Colors.black),
                   decoration: InputDecoration(
@@ -73,18 +85,32 @@ class SignInPage extends StatelessWidget {
                   style: const TextStyle(
                       fontSize: 25.0, height: 2, color: Colors.black),
                   decoration: InputDecoration(
-                      enabledBorder: UnderlineInputBorder(
-                          borderRadius: BorderRadius.circular(15)),
-                      focusedBorder: UnderlineInputBorder(
-                          borderRadius: BorderRadius.circular(15)),
-                      contentPadding:
-                          const EdgeInsets.only(left: 40, bottom: 10, top: 8),
-                      filled: true,
-                      fillColor: greenLightColor,
-                      hintText: 'Password'),
-                  obscureText: true,
-                  // scrollPadding: EdgeInsets.all(8.0),
-                  // cursorRadius: Radius.circular(15),
+                    enabledBorder: UnderlineInputBorder(
+                        borderRadius: BorderRadius.circular(15)),
+                    focusedBorder: UnderlineInputBorder(
+                        borderRadius: BorderRadius.circular(15)),
+                    contentPadding:
+                        const EdgeInsets.only(left: 40, bottom: 10, top: 8),
+                    filled: true,
+                    fillColor: greenLightColor,
+                    hintText: 'Password',
+                    suffixIcon: IconButton(
+                      icon: SvgPicture.asset(
+                        _obscureText
+                            ? 'assets/ic_eye_close.svg'
+                            : 'assets/ic_eye_open.svg',
+                        // color: Colors.grey,
+                        height: 25,
+                        width: 25,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _obscureText = !_obscureText;
+                        });
+                      },
+                    ),
+                  ),
+                  obscureText: _obscureText,
                 ),
                 const SizedBox(
                   height: 10,
@@ -178,12 +204,7 @@ class SignInPage extends StatelessWidget {
                 CustomTextButton(
                   title: 'Belum punya akun? Daftar disini',
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const SignUpPage(),
-                      ),
-                    );
+                    Navigator.pushNamed(context, '/signup');
                   },
                 )
               ],

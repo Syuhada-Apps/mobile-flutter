@@ -1,14 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:syuhada_apps/shared/theme.dart';
-import 'package:syuhada_apps/ui/pages/sign_in_page.dart';
 import 'package:syuhada_apps/ui/widgets/buttons.dart';
 
-class SignUpPage extends StatelessWidget {
+class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
 
   @override
+  State<SignUpPage> createState() => _SignUpPageState();
+}
+
+class _SignUpPageState extends State<SignUpPage> {
+  // ignore: prefer_typing_uninitialized_variables
+  var _selectedGender;
+  bool _obscureText = true;
+  bool _reobscureText = true;
+  bool _isChecked = false;
+  @override
   Widget build(BuildContext context) {
+    // String _selectedGender;
     return Scaffold(
       backgroundColor: whiteColor,
       body: ListView(
@@ -48,6 +58,7 @@ class SignUpPage extends StatelessWidget {
               children: [
                 //NOTE: Nama Lengkap input
                 TextFormField(
+                  keyboardType: TextInputType.name,
                   style: const TextStyle(
                       fontSize: 25.0, height: 2, color: Colors.black),
                   decoration: InputDecoration(
@@ -75,6 +86,13 @@ class SignUpPage extends StatelessWidget {
                     // validator: (value) => EmailValidator.validate(value)
                     //     ? null
                     //     : "Please enter a valid email",
+                    keyboardType: TextInputType.emailAddress,
+                    validator: (value) {
+                      if (!value!.contains('@')) {
+                        return 'Invalid email';
+                      }
+                      return null;
+                    },
                     style: const TextStyle(
                         fontSize: 25.0, height: 2, color: Colors.black),
                     decoration: InputDecoration(
@@ -93,8 +111,9 @@ class SignUpPage extends StatelessWidget {
                 const SizedBox(
                   height: 25,
                 ),
-                //NOTE: email input
+                //NOTE: nomor telepon input
                 TextFormField(
+                  keyboardType: TextInputType.phone,
                   style: const TextStyle(
                       fontSize: 25.0, height: 2, color: Colors.black),
                   decoration: InputDecoration(
@@ -113,8 +132,9 @@ class SignUpPage extends StatelessWidget {
                 const SizedBox(
                   height: 25,
                 ),
-                //NOTE: email input
+                //NOTE: Alanat input
                 TextFormField(
+                  keyboardType: TextInputType.streetAddress,
                   style: const TextStyle(
                       fontSize: 25.0, height: 2, color: Colors.black),
                   decoration: InputDecoration(
@@ -133,22 +153,38 @@ class SignUpPage extends StatelessWidget {
                 const SizedBox(
                   height: 25,
                 ),
-                //NOTE: email input
-                TextFormField(
+                //NOTE: Jenis kelamin input
+                DropdownButtonFormField(
+                  value: _selectedGender,
                   style: const TextStyle(
-                      fontSize: 25.0, height: 2, color: Colors.black),
+                      fontSize: 25.0, height: 1, color: Colors.black),
                   decoration: InputDecoration(
                       enabledBorder: UnderlineInputBorder(
                           borderRadius: BorderRadius.circular(15)),
                       focusedBorder: UnderlineInputBorder(
                           borderRadius: BorderRadius.circular(15)),
                       contentPadding:
-                          const EdgeInsets.only(left: 40, bottom: 10, top: 8),
+                          const EdgeInsets.only(left: 40, bottom: 20, top: 20),
                       filled: true,
                       fillColor: greenLightColor,
                       hintText: 'Jenis Kelamin'),
-                  // scrollPadding: EdgeInsets.all(8.0),
-                  // cursorRadius: Radius.circular(15),
+                  items: const [
+                    DropdownMenuItem(
+                      value: 'Laki-Laki',
+                      child: Text(
+                        'Laki-Laki',
+                      ),
+                    ),
+                    DropdownMenuItem(
+                      value: 'Perempuan',
+                      child: Text('Perempuan'),
+                    ),
+                  ],
+                  onChanged: (value) {
+                    setState(() {
+                      var _selectedGender = value;
+                    });
+                  },
                 ),
                 const SizedBox(
                   height: 25,
@@ -158,18 +194,32 @@ class SignUpPage extends StatelessWidget {
                   style: const TextStyle(
                       fontSize: 25.0, height: 2, color: Colors.black),
                   decoration: InputDecoration(
-                      enabledBorder: UnderlineInputBorder(
-                          borderRadius: BorderRadius.circular(15)),
-                      focusedBorder: UnderlineInputBorder(
-                          borderRadius: BorderRadius.circular(15)),
-                      contentPadding:
-                          const EdgeInsets.only(left: 40, bottom: 10, top: 8),
-                      filled: true,
-                      fillColor: greenLightColor,
-                      hintText: 'Password'),
-                  obscureText: true,
-                  // scrollPadding: EdgeInsets.all(8.0),
-                  // cursorRadius: Radius.circular(15),
+                    enabledBorder: UnderlineInputBorder(
+                        borderRadius: BorderRadius.circular(15)),
+                    focusedBorder: UnderlineInputBorder(
+                        borderRadius: BorderRadius.circular(15)),
+                    contentPadding:
+                        const EdgeInsets.only(left: 40, bottom: 10, top: 8),
+                    filled: true,
+                    fillColor: greenLightColor,
+                    hintText: 'Password',
+                    suffixIcon: IconButton(
+                      icon: SvgPicture.asset(
+                        _obscureText
+                            ? 'assets/ic_eye_close.svg'
+                            : 'assets/ic_eye_open.svg',
+                        // color: Colors.grey,
+                        height: 25,
+                        width: 25,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _obscureText = !_obscureText;
+                        });
+                      },
+                    ),
+                  ),
+                  obscureText: _obscureText,
                 ),
                 const SizedBox(
                   height: 25,
@@ -178,16 +228,32 @@ class SignUpPage extends StatelessWidget {
                   style: const TextStyle(
                       fontSize: 25.0, height: 2, color: Colors.black),
                   decoration: InputDecoration(
-                      enabledBorder: UnderlineInputBorder(
-                          borderRadius: BorderRadius.circular(15)),
-                      focusedBorder: UnderlineInputBorder(
-                          borderRadius: BorderRadius.circular(15)),
-                      contentPadding:
-                          const EdgeInsets.only(left: 40, bottom: 10, top: 8),
-                      filled: true,
-                      fillColor: greenLightColor,
-                      hintText: 'Re-Type Password'),
-                  obscureText: true,
+                    enabledBorder: UnderlineInputBorder(
+                        borderRadius: BorderRadius.circular(15)),
+                    focusedBorder: UnderlineInputBorder(
+                        borderRadius: BorderRadius.circular(15)),
+                    contentPadding:
+                        const EdgeInsets.only(left: 40, bottom: 10, top: 8),
+                    filled: true,
+                    fillColor: greenLightColor,
+                    hintText: 'Re-Type Password',
+                    suffixIcon: IconButton(
+                      icon: SvgPicture.asset(
+                        _reobscureText
+                            ? 'assets/ic_eye_close.svg'
+                            : 'assets/ic_eye_open.svg',
+                        // color: Colors.grey,
+                        height: 25,
+                        width: 25,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          _reobscureText = !_reobscureText;
+                        });
+                      },
+                    ),
+                  ),
+                  obscureText: _reobscureText,
                   // scrollPadding: EdgeInsets.all(8.0),
                   // cursorRadius: Radius.circular(15),
                 ),
@@ -196,11 +262,25 @@ class SignUpPage extends StatelessWidget {
                 ),
                 // teks untuk lupa kata sandi
                 // gunakan align untuk atur posisi teks
-                Align(
+                Container(
+                  padding: const EdgeInsets.all(0),
                   alignment: Alignment.centerLeft,
-                  child: Text(
-                    'Dengan mendaftar mematuhi, Kebijakan Privasi',
-                    style: blackBodyStyle.copyWith(fontSize: 17),
+                  child: Row(
+                    children: <Widget>[
+                      Checkbox(
+                        activeColor: greenDarkColor,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(7)),
+                        checkColor: Colors.white,
+                        value: _isChecked,
+                        onChanged: (value) =>
+                            setState(() => _isChecked = value!),
+                      ),
+                      Text(
+                        'Dengan mendaftar mematuhi, Kebijakan Privasi',
+                        style: blackBodyStyle.copyWith(fontSize: 17),
+                      ),
+                    ],
                   ),
                 ),
 
@@ -208,7 +288,11 @@ class SignUpPage extends StatelessWidget {
                   height: 50,
                 ),
                 // buat button dengan sizedbox
-                const CustomFilledButton(title: 'Masuk'),
+                CustomFilledButton(
+                    title: 'Masuk',
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/confirm');
+                    }),
                 const SizedBox(
                   height: 50,
                 ),
@@ -217,12 +301,7 @@ class SignUpPage extends StatelessWidget {
                 CustomTextButton(
                   title: 'Sudah punya akun? Masuk disini',
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const SignInPage(),
-                      ),
-                    );
+                    Navigator.pushNamed(context, '/signin');
                   },
                 )
               ],
