@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:syuhada_apps/shared/theme.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:syuhada_apps/ui/pages/splashscreen_page.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({Key? key}) : super(key: key);
@@ -21,13 +20,7 @@ class _WelcomePageState extends State<WelcomePage> {
     super.initState();
     //kasih timer untuk membatasi waktu splash
     Timer(const Duration(seconds: 3), () {
-      Navigator.push(
-        context,
-        //pindah intent
-        MaterialPageRoute(
-          builder: (context) => const SplashScreenPage(),
-        ),
-      );
+      Navigator.pushNamed(context, '/splashscreen');
     });
   }
 

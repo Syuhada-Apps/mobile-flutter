@@ -2,7 +2,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:syuhada_apps/shared/theme.dart';
-import 'package:syuhada_apps/ui/pages/sign_in_page.dart';
 
 //agar intent responsive ubah jadi statefulwidget
 class SplashScreenPage extends StatefulWidget {
@@ -133,12 +132,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
                       onPressed: () {
                         // apabila current index = 2 maka akan masuk ke halaman sign in
                         currentIndex == 2
-                            ? Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const SignInPage(),
-                                ),
-                              )
+                            ? Navigator.pushNamed(context, '/signin')
                             : carouselController.nextPage();
                       },
                       // atur syle button
