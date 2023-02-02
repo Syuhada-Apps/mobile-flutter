@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:syuhada_apps/ui/pages/confirm_page.dart';
 import 'package:syuhada_apps/ui/pages/sign_in_page.dart';
 import 'package:syuhada_apps/ui/pages/sign_up_pages.dart';
+import 'package:syuhada_apps/ui/pages/sign_up_profile.dart';
+import 'package:syuhada_apps/ui/pages/sign_up_success.dart';
 import 'package:syuhada_apps/ui/pages/splashscreen_page.dart';
 import 'package:syuhada_apps/ui/pages/welcome_page.dart';
 
@@ -26,7 +28,9 @@ class MyApp extends StatelessWidget {
         '/splashscreen': (context) => const SplashScreenPage(),
         '/signin': (context) => const SignInPage(),
         '/signup': (context) => const SignUpPage(),
-        '/confirm': (context) => const ConfirmPage()
+        '/confirm': (context) => const ConfirmPage(),
+        '/signupprofile': (context) => const SignUpProfilePage(),
+        '/signupsuccess': (context) => const SignUpSuccessPage(),
       },
     );
   }
