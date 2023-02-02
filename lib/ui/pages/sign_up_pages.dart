@@ -289,9 +289,9 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
                 // buat button dengan sizedbox
                 CustomFilledButton(
-                    title: 'Masuk',
+                    title: 'Daftar',
                     onPressed: () {
-                      Navigator.pushNamed(context, '/confirm');
+                      Navigator.pushNamed(context, '/signupprofile');
                     }),
                 const SizedBox(
                   height: 50,

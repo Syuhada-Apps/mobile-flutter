@@ -83,7 +83,7 @@ class _SignUpProfilePageState extends State<SignUpProfilePage> {
                 CustomFilledButton(
                   title: 'Pasang Profil',
                   onPressed: () {
-                    Navigator.pushNamed(context, '/signupsuccess');
+                    Navigator.pushNamed(context, '/confirm');
                   },
                 ),
                 const SizedBox(
@@ -91,7 +91,9 @@ class _SignUpProfilePageState extends State<SignUpProfilePage> {
                 ),
                 CustomTextButton(
                   title: 'Lewati Pemasangan Gambar',
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/confirm');
+                  },
                 )
               ],
             ),
