@@ -132,7 +132,8 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
                       onPressed: () {
                         // apabila current index = 2 maka akan masuk ke halaman sign in
                         currentIndex == 2
-                            ? Navigator.pushNamed(context, '/signin')
+                            ? Navigator.pushNamedAndRemoveUntil(
+                                context, '/signin', (route) => false)
                             : carouselController.nextPage();
                       },
                       // atur syle button

@@ -122,7 +122,9 @@ class _SignInPageState extends State<SignInPage> {
                   // gunakan infinty agar responsive
                   width: double.infinity,
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/signinforgot');
+                    },
                     child: Align(
                       alignment: Alignment.centerRight,
                       child: Text(

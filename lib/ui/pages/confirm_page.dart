@@ -86,7 +86,7 @@ class ConfirmPage extends StatelessWidget {
           CustomFilledButton(
             title: 'Konfirmasi',
             onPressed: () {
-              Navigator.pushNamed(context, '/signupprofile');
+              Navigator.pushNamed(context, '/signupsuccess');
             },
           )
         ],

@@ -12,7 +12,6 @@ class SignUpSuccessPage extends StatefulWidget {
 }
 
 class _SignUpSuccessPageState extends State<SignUpSuccessPage> {
-  bool _obscureText = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +25,7 @@ class _SignUpSuccessPageState extends State<SignUpSuccessPage> {
 
           Text(
             // teks header
-            'Pendaftaran Akun\n Sukses!',
+            'Yeay Berhasil!',
             style: blackHeaderStyle.copyWith(fontSize: 50, fontWeight: bold),
             textAlign: TextAlign.center,
           ),
@@ -49,7 +48,7 @@ class _SignUpSuccessPageState extends State<SignUpSuccessPage> {
           ),
 
           const SizedBox(
-            height: 250,
+            height: 290,
           ),
           // buat container untuk menampung button upload
           Container(

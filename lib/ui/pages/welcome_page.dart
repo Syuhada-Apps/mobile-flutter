@@ -19,8 +19,9 @@ class _WelcomePageState extends State<WelcomePage> {
     // TODO: implement initState
     super.initState();
     //kasih timer untuk membatasi waktu splash
-    Timer(const Duration(seconds: 3), () {
-      Navigator.pushNamed(context, '/splashscreen');
+    Timer(const Duration(seconds: 2), () {
+      Navigator.pushNamedAndRemoveUntil(
+          context, '/splashscreen', (route) => false);
     });
   }
 
