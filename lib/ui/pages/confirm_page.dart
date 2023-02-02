@@ -17,7 +17,7 @@ class ConfirmPage extends StatelessWidget {
         children: [
           // header gambar
           SvgPicture.asset(
-            'assets/img_signup.svg',
+            'assets/img_confirm.svg',
             width: 385,
           ),
           const SizedBox(
@@ -74,7 +74,7 @@ class ConfirmPage extends StatelessWidget {
             }, // end onSubmit
           ),
           SizedBox(
-            height: 290,
+            height: 270,
           ),
           CustomTextButton(
             title: 'Belum dapat OTP? Klik Disini',
@@ -85,7 +85,9 @@ class ConfirmPage extends StatelessWidget {
           ),
           CustomFilledButton(
             title: 'Konfirmasi',
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, '/signupprofile');
+            },
           )
         ],
       ),
