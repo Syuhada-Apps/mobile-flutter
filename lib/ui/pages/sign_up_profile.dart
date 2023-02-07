@@ -18,14 +18,14 @@ class _SignUpProfilePageState extends State<SignUpProfilePage> {
       // buat layout listview agar mudah atur vertikal fitur
       body: ListView(
         padding:
-            const EdgeInsets.only(left: 60, right: 60, top: 120, bottom: 48),
+            const EdgeInsets.only(left: 47, right: 47, top: 101, bottom: 40),
         children: [
           // header gambar
 
           Text(
             // teks header
             'Atur Foto Profil',
-            style: blackHeaderStyle.copyWith(fontSize: 50, fontWeight: bold),
+            style: blackHeaderStyle.copyWith(fontSize: 36, fontWeight: bold),
             textAlign: TextAlign.center,
           ),
           const SizedBox(
@@ -34,11 +34,11 @@ class _SignUpProfilePageState extends State<SignUpProfilePage> {
           // teks deskripsi
           Text(
             'Masukkan 4 digit kode yang masuk di nomor handphonemu.',
-            style: blackBodyStyle.copyWith(fontSize: 25, fontWeight: regular),
+            style: blackBodyStyle.copyWith(fontSize: 20, fontWeight: regular),
             textAlign: TextAlign.center,
           ),
           const SizedBox(
-            height: 150,
+            height: 100,
           ),
           // buat container untuk menampung button upload
           Container(
@@ -60,8 +60,8 @@ class _SignUpProfilePageState extends State<SignUpProfilePage> {
                 //   ),
                 // ),
                 Container(
-                  width: 300,
-                  height: 300,
+                  width: 265,
+                  height: 265,
                   decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       image: DecorationImage(
@@ -76,23 +76,23 @@ class _SignUpProfilePageState extends State<SignUpProfilePage> {
                 ),
 
                 SizedBox(
-                  height: 210,
+                  height: 160,
                 ),
 
                 // buat button dengan CustomFilledButton
                 CustomFilledButton(
                   title: 'Pasang Profil',
                   onPressed: () {
-                    Navigator.pushNamed(context, '/confirm');
+                    Navigator.pushNamed(context, '/signupsuccess');
                   },
                 ),
                 const SizedBox(
-                  height: 30,
+                  height: 10,
                 ),
                 CustomTextButton(
                   title: 'Lewati Pemasangan Gambar',
                   onPressed: () {
-                    Navigator.pushNamed(context, '/confirm');
+                    Navigator.pushNamed(context, '/signupsuccess');
                   },
                 )
               ],

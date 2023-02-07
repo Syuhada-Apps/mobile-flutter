@@ -19,14 +19,14 @@ class _SignUpSuccessPageState extends State<SignUpSuccessPage> {
       // buat layout listview agar mudah atur vertikal fitur
       body: ListView(
         padding:
-            const EdgeInsets.only(left: 60, right: 60, top: 120, bottom: 48),
+            const EdgeInsets.only(left: 47, right: 47, top: 101, bottom: 50),
         children: [
           // header gambar
 
           Text(
             // teks header
-            'Yeay Berhasil!',
-            style: blackHeaderStyle.copyWith(fontSize: 50, fontWeight: bold),
+            'Pendaftaran Berhasil!',
+            style: blackHeaderStyle.copyWith(fontSize: 36, fontWeight: bold),
             textAlign: TextAlign.center,
           ),
 
@@ -36,19 +36,19 @@ class _SignUpSuccessPageState extends State<SignUpSuccessPage> {
 
           SvgPicture.asset(
             'assets/img_success.svg',
-            width: 385,
+            width: 280,
           ),
           const SizedBox(
             height: 70,
           ),
           Text(
             'Lorem ipsum dolor sit amet consectetur. Pulvinar pulvinar tellus dignissim feugiat. Amet elit lectus pretium mollis id orci. Eu pharetra faucibus sit erat. Malesuada nullam nulla sed fames elementum.',
-            style: blackBodyStyle.copyWith(fontSize: 25, fontWeight: regular),
+            style: blackBodyStyle.copyWith(fontSize: 20, fontWeight: regular),
             textAlign: TextAlign.center,
           ),
 
           const SizedBox(
-            height: 290,
+            height: 190,
           ),
           // buat container untuk menampung button upload
           Container(
@@ -57,9 +57,12 @@ class _SignUpSuccessPageState extends State<SignUpSuccessPage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 // buat button dengan CustomFilledButton
-                const CustomFilledButton(
+                CustomFilledButton(
                   title: "Mulai Sekarang",
-                  // onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, '/home', (route) => false);
+                  },
                 ),
               ],
             ),

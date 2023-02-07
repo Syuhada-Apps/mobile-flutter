@@ -1,7 +1,9 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:syuhada_apps/shared/theme.dart';
 import 'package:syuhada_apps/ui/widgets/buttons.dart';
+import 'package:flutter/material.dart';
+
+import '../../models/item_signup_api.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -16,6 +18,10 @@ class _SignUpPageState extends State<SignUpPage> {
   bool _obscureText = true;
   bool _reobscureText = true;
   bool _isChecked = false;
+
+  // final dio = Dio();
+  // final client = RestClient(dio);
+
   @override
   Widget build(BuildContext context) {
     // String _selectedGender;
@@ -23,44 +29,44 @@ class _SignUpPageState extends State<SignUpPage> {
       backgroundColor: whiteColor,
       body: ListView(
         padding:
-            const EdgeInsets.only(left: 60, right: 60, top: 120, bottom: 48),
+            const EdgeInsets.only(left: 47, right: 47, top: 80, bottom: 50),
         children: [
           // header gambar
           SvgPicture.asset(
             'assets/img_signup.svg',
-            width: 385,
+            width: 300,
           ),
           const SizedBox(
-            height: 50,
+            height: 20,
           ),
           Text(
             // teks header
             'Buat Akun',
-            style: blackHeaderStyle.copyWith(fontSize: 50, fontWeight: bold),
+            style: blackHeaderStyle.copyWith(fontSize: 36, fontWeight: bold),
             textAlign: TextAlign.center,
           ),
           const SizedBox(
-            height: 10,
+            height: 11,
           ),
           // teks deskripsi
           Text(
             'and discover new experience here.',
-            style: blackBodyStyle.copyWith(fontSize: 25, fontWeight: regular),
+            style: blackBodyStyle.copyWith(fontSize: 20, fontWeight: regular),
             textAlign: TextAlign.center,
           ),
           const SizedBox(
-            height: 50,
+            height: 47,
           ),
           // buat container untuk menampung textField dan button
           Container(
             color: whiteColor,
             child: Column(
               children: [
-                //NOTE: Nama Lengkap input
+                //NOTE: Nama Depan input
                 TextFormField(
                   keyboardType: TextInputType.name,
                   style: const TextStyle(
-                      fontSize: 25.0, height: 2, color: Colors.black),
+                      fontSize: 18, height: 2, color: Colors.black),
                   decoration: InputDecoration(
                       // labelText: 'Nama Lengkap',
                       // labelStyle:
@@ -73,12 +79,60 @@ class _SignUpPageState extends State<SignUpPage> {
                           const EdgeInsets.only(left: 40, bottom: 10, top: 8),
                       filled: true,
                       fillColor: greenLightColor,
-                      hintText: 'Nama Lengkap'),
+                      hintText: 'Nama Depan'),
                   // scrollPadding: EdgeInsets.all(8.0),
                   // cursorRadius: Radius.circular(15),
                 ),
                 const SizedBox(
-                  height: 25,
+                  height: 20,
+                ),
+                //NOTE: Nama Belakang input
+                TextFormField(
+                  keyboardType: TextInputType.name,
+                  style: const TextStyle(
+                      fontSize: 18, height: 2, color: Colors.black),
+                  decoration: InputDecoration(
+                      // labelText: 'Nama Lengkap',
+                      // labelStyle:
+                      //     const TextStyle(color: Colors.black, fontSize: 15),
+                      enabledBorder: UnderlineInputBorder(
+                          borderRadius: BorderRadius.circular(15)),
+                      focusedBorder: UnderlineInputBorder(
+                          borderRadius: BorderRadius.circular(15)),
+                      contentPadding:
+                          const EdgeInsets.only(left: 40, bottom: 10, top: 8),
+                      filled: true,
+                      fillColor: greenLightColor,
+                      hintText: 'Nama Belakang'),
+                  // scrollPadding: EdgeInsets.all(8.0),
+                  // cursorRadius: Radius.circular(15),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                //NOTE: Username input
+                TextFormField(
+                  keyboardType: TextInputType.name,
+                  style: const TextStyle(
+                      fontSize: 18, height: 2, color: Colors.black),
+                  decoration: InputDecoration(
+                      // labelText: 'Nama Lengkap',
+                      // labelStyle:
+                      //     const TextStyle(color: Colors.black, fontSize: 15),
+                      enabledBorder: UnderlineInputBorder(
+                          borderRadius: BorderRadius.circular(15)),
+                      focusedBorder: UnderlineInputBorder(
+                          borderRadius: BorderRadius.circular(15)),
+                      contentPadding:
+                          const EdgeInsets.only(left: 40, bottom: 10, top: 8),
+                      filled: true,
+                      fillColor: greenLightColor,
+                      hintText: 'Username'),
+                  // scrollPadding: EdgeInsets.all(8.0),
+                  // cursorRadius: Radius.circular(15),
+                ),
+                const SizedBox(
+                  height: 20,
                 ),
                 //NOTE: email input
                 Form(
@@ -94,7 +148,7 @@ class _SignUpPageState extends State<SignUpPage> {
                       return null;
                     },
                     style: const TextStyle(
-                        fontSize: 25.0, height: 2, color: Colors.black),
+                        fontSize: 18, height: 2, color: Colors.black),
                     decoration: InputDecoration(
                         enabledBorder: UnderlineInputBorder(
                             borderRadius: BorderRadius.circular(15)),
@@ -109,13 +163,13 @@ class _SignUpPageState extends State<SignUpPage> {
                 ),
 
                 const SizedBox(
-                  height: 25,
+                  height: 20,
                 ),
                 //NOTE: nomor telepon input
                 TextFormField(
                   keyboardType: TextInputType.phone,
                   style: const TextStyle(
-                      fontSize: 25.0, height: 2, color: Colors.black),
+                      fontSize: 18, height: 2, color: Colors.black),
                   decoration: InputDecoration(
                       enabledBorder: UnderlineInputBorder(
                           borderRadius: BorderRadius.circular(15)),
@@ -125,18 +179,18 @@ class _SignUpPageState extends State<SignUpPage> {
                           const EdgeInsets.only(left: 40, bottom: 10, top: 8),
                       filled: true,
                       fillColor: greenLightColor,
-                      hintText: 'Nomor Telepon'),
+                      hintText: 'Nomor WhatsApp'),
                   // scrollPadding: EdgeInsets.all(8.0),
                   // cursorRadius: Radius.circular(15),
                 ),
                 const SizedBox(
-                  height: 25,
+                  height: 20,
                 ),
-                //NOTE: Alanat input
+                //NOTE: Alamat input
                 TextFormField(
                   keyboardType: TextInputType.streetAddress,
                   style: const TextStyle(
-                      fontSize: 25.0, height: 2, color: Colors.black),
+                      fontSize: 18, height: 2, color: Colors.black),
                   decoration: InputDecoration(
                       enabledBorder: UnderlineInputBorder(
                           borderRadius: BorderRadius.circular(15)),
@@ -151,20 +205,20 @@ class _SignUpPageState extends State<SignUpPage> {
                   // cursorRadius: Radius.circular(15),
                 ),
                 const SizedBox(
-                  height: 25,
+                  height: 20,
                 ),
                 //NOTE: Jenis kelamin input
                 DropdownButtonFormField(
                   value: _selectedGender,
                   style: const TextStyle(
-                      fontSize: 25.0, height: 1, color: Colors.black),
+                      fontSize: 18, height: 1, color: Colors.black),
                   decoration: InputDecoration(
                       enabledBorder: UnderlineInputBorder(
                           borderRadius: BorderRadius.circular(15)),
                       focusedBorder: UnderlineInputBorder(
                           borderRadius: BorderRadius.circular(15)),
                       contentPadding:
-                          const EdgeInsets.only(left: 40, bottom: 20, top: 20),
+                          const EdgeInsets.only(left: 40, bottom: 10, top: 10),
                       filled: true,
                       fillColor: greenLightColor,
                       hintText: 'Jenis Kelamin'),
@@ -187,12 +241,12 @@ class _SignUpPageState extends State<SignUpPage> {
                   },
                 ),
                 const SizedBox(
-                  height: 25,
+                  height: 20,
                 ),
                 // NOTE: password input
                 TextFormField(
                   style: const TextStyle(
-                      fontSize: 25.0, height: 2, color: Colors.black),
+                      fontSize: 18, height: 2, color: Colors.black),
                   decoration: InputDecoration(
                     enabledBorder: UnderlineInputBorder(
                         borderRadius: BorderRadius.circular(15)),
@@ -209,8 +263,8 @@ class _SignUpPageState extends State<SignUpPage> {
                             ? 'assets/ic_eye_close.svg'
                             : 'assets/ic_eye_open.svg',
                         // color: Colors.grey,
-                        height: 25,
-                        width: 25,
+                        height: 20,
+                        width: 20,
                       ),
                       onPressed: () {
                         setState(() {
@@ -222,11 +276,11 @@ class _SignUpPageState extends State<SignUpPage> {
                   obscureText: _obscureText,
                 ),
                 const SizedBox(
-                  height: 25,
+                  height: 20,
                 ),
                 TextFormField(
                   style: const TextStyle(
-                      fontSize: 25.0, height: 2, color: Colors.black),
+                      fontSize: 18, height: 2, color: Colors.black),
                   decoration: InputDecoration(
                     enabledBorder: UnderlineInputBorder(
                         borderRadius: BorderRadius.circular(15)),
@@ -243,8 +297,8 @@ class _SignUpPageState extends State<SignUpPage> {
                             ? 'assets/ic_eye_close.svg'
                             : 'assets/ic_eye_open.svg',
                         // color: Colors.grey,
-                        height: 25,
-                        width: 25,
+                        height: 20,
+                        width: 20,
                       ),
                       onPressed: () {
                         setState(() {
@@ -258,7 +312,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   // cursorRadius: Radius.circular(15),
                 ),
                 const SizedBox(
-                  height: 15,
+                  height: 10,
                 ),
                 // teks untuk lupa kata sandi
                 // gunakan align untuk atur posisi teks
@@ -278,23 +332,23 @@ class _SignUpPageState extends State<SignUpPage> {
                       ),
                       Text(
                         'Dengan mendaftar mematuhi, Kebijakan Privasi',
-                        style: blackBodyStyle.copyWith(fontSize: 17),
+                        style: blackBodyStyle.copyWith(fontSize: 13),
                       ),
                     ],
                   ),
                 ),
 
                 const SizedBox(
-                  height: 50,
+                  height: 23,
                 ),
                 // buat button dengan sizedbox
                 CustomFilledButton(
-                    title: 'Daftar',
+                    title: 'Selanjutnya',
                     onPressed: () {
-                      Navigator.pushNamed(context, '/signupprofile');
+                      Navigator.pushNamed(context, '/confirm');
                     }),
                 const SizedBox(
-                  height: 50,
+                  height: 20,
                 ),
                 // buat pembatas dengan container
 

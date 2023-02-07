@@ -13,47 +13,47 @@ class ConfirmPage extends StatelessWidget {
       backgroundColor: whiteColor,
       body: ListView(
         padding:
-            const EdgeInsets.only(left: 60, right: 60, top: 120, bottom: 48),
+            const EdgeInsets.only(left: 47, right: 47, top: 80, bottom: 50),
         children: [
           // header gambar
           SvgPicture.asset(
             'assets/img_confirm.svg',
-            width: 385,
+            width: 300,
           ),
           const SizedBox(
-            height: 50,
+            height: 20,
           ),
           Text(
             // teks header
             'Konfirmasi Akun',
-            style: blackHeaderStyle.copyWith(fontSize: 50, fontWeight: bold),
+            style: blackHeaderStyle.copyWith(fontSize: 36, fontWeight: bold),
             textAlign: TextAlign.center,
           ),
           const SizedBox(
-            height: 10,
+            height: 11,
           ),
           // teks deskripsi
           Text(
             'Masukkan 4 digit kode yang masuk di nomor handphonemu.',
-            style: blackBodyStyle.copyWith(fontSize: 25, fontWeight: regular),
+            style: blackBodyStyle.copyWith(fontSize: 20, fontWeight: regular),
             textAlign: TextAlign.center,
           ),
           const SizedBox(
-            height: 70,
+            height: 56,
           ),
 
           OtpTextField(
             numberOfFields: 5,
             keyboardType: TextInputType.number,
             cursorColor: greenDarkColor,
-            fieldWidth: 60,
-            borderWidth: 3,
+            fieldWidth: 50,
+            borderWidth: 1.5,
             borderColor: greenDarkColor,
             filled: true,
             focusedBorderColor: greenDarkColor,
             fillColor: greenLightColor,
-            textStyle: TextStyle(fontSize: 30, color: greenDarkColor),
-            margin: EdgeInsets.only(right: 10),
+            textStyle: TextStyle(fontSize: 20, color: greenDarkColor),
+            margin: EdgeInsets.only(right: 8),
             borderRadius: BorderRadius.all(Radius.circular(15)),
             //set to true to show as box or false to show as dash
             showFieldAsBox: true,
@@ -74,7 +74,7 @@ class ConfirmPage extends StatelessWidget {
             }, // end onSubmit
           ),
           SizedBox(
-            height: 270,
+            height: 225,
           ),
           CustomTextButton(
             title: 'Belum dapat OTP? Klik Disini',
@@ -86,7 +86,7 @@ class ConfirmPage extends StatelessWidget {
           CustomFilledButton(
             title: 'Konfirmasi',
             onPressed: () {
-              Navigator.pushNamed(context, '/signupsuccess');
+              Navigator.pushNamed(context, '/signupprofile');
             },
           )
         ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:syuhada_apps/ui/pages/confirm_page.dart';
+import 'package:syuhada_apps/ui/pages/home.dart';
 import 'package:syuhada_apps/ui/pages/sign_in_forgot.dart';
 import 'package:syuhada_apps/ui/pages/sign_in_page.dart';
 import 'package:syuhada_apps/ui/pages/sign_in_reset.dart';
@@ -35,6 +36,7 @@ class MyApp extends StatelessWidget {
         '/signupsuccess': (context) => const SignUpSuccessPage(),
         '/signinforgot': (context) => const SignInForgotPage(),
         '/signinreset': (context) => const SignInResetPage(),
+        '/home': (context) => const HomePage(),
       },
     );
   }

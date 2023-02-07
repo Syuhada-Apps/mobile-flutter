@@ -12,7 +12,7 @@ class CustomFilledButton extends StatelessWidget {
       {Key? key,
       required this.title,
       this.width = double.infinity,
-      this.height = 70,
+      this.height = 55,
       this.onPressed})
       : super(key: key);
 
@@ -31,7 +31,7 @@ class CustomFilledButton extends StatelessWidget {
         ),
         child: Text(
           title,
-          style: whiteButtonStyle.copyWith(fontSize: 30),
+          style: whiteButtonStyle.copyWith(fontSize: 25),
         ),
       ),
     );
@@ -49,7 +49,7 @@ class CustomTextButton extends StatelessWidget {
       {Key? key,
       required this.title,
       this.width = double.infinity,
-      this.height = 50,
+      this.height = 55,
       this.onPressed})
       : super(key: key);
 
@@ -63,7 +63,7 @@ class CustomTextButton extends StatelessWidget {
         onPressed: onPressed,
         child: Text(
           title,
-          style: greyBodyStyle.copyWith(fontSize: 20),
+          style: greyBodyStyle.copyWith(fontSize: 18),
         ),
       ),
     );
