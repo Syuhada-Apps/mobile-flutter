@@ -54,14 +54,14 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
                   //infinity agar responsive
                   height: double.infinity,
                   // width: 200,
-                  fit: BoxFit.fitHeight,
+                  fit: BoxFit.contain,
                 ),
 
                 SvgPicture.asset(
                   'assets/img_splash2.svg',
                   //infinity agar responsive
                   height: double.infinity,
-                  fit: BoxFit.fitHeight,
+                  fit: BoxFit.contain,
                   // width: 200,
                 ),
 
@@ -69,7 +69,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
                   'assets/img_splash3.svg',
                   //infinity agar responsive
                   height: double.infinity,
-                  fit: BoxFit.fitHeight,
+                  fit: BoxFit.contain,
                   // width: 200,
                 ),
                 // Image.asset('assets/img_splash1.png'),

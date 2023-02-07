@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:syuhada_apps/shared/theme.dart';
 import 'package:syuhada_apps/ui/pages/confirm_page.dart';
 import 'package:syuhada_apps/ui/pages/home.dart';
 import 'package:syuhada_apps/ui/pages/sign_in_forgot.dart';
@@ -13,8 +14,8 @@ import 'package:syuhada_apps/ui/pages/welcome_page.dart';
 
 //MyApp dibuat konstan
 void main() {
-  SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(statusBarColor: Colors.transparent));
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: whiteColor, statusBarIconBrightness: Brightness.dark));
   runApp(const MyApp());
 }
 
