@@ -3,8 +3,6 @@ import 'package:syuhada_apps/shared/theme.dart';
 import 'package:syuhada_apps/ui/widgets/buttons.dart';
 import 'package:flutter/material.dart';
 
-import '../../models/item_signup_api.dart';
-
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
 
