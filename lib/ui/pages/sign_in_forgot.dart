@@ -19,29 +19,29 @@ class _SignInForgotPageState extends State<SignInForgotPage> {
       // buat layout listview agar mudah atur vertikal fitur
       body: ListView(
         padding:
-            const EdgeInsets.only(left: 60, right: 60, top: 120, bottom: 48),
+            const EdgeInsets.only(left: 47, right: 47, top: 80, bottom: 50),
         children: [
           // header gambar
           SvgPicture.asset(
             'assets/img_forgot.svg',
-            width: 350,
+            width: 280,
           ),
           const SizedBox(
-            height: 50,
+            height: 20,
           ),
           Text(
             // teks header
             'Lupa Kata Sandi',
-            style: blackHeaderStyle.copyWith(fontSize: 50, fontWeight: bold),
+            style: blackHeaderStyle.copyWith(fontSize: 36, fontWeight: bold),
             textAlign: TextAlign.center,
           ),
           const SizedBox(
-            height: 10,
+            height: 11,
           ),
           // teks deskripsi
           Text(
             'Jangan khawatir! Kami akan bantu memulihkan akunmu.',
-            style: blackBodyStyle.copyWith(fontSize: 25, fontWeight: regular),
+            style: blackBodyStyle.copyWith(fontSize: 20, fontWeight: regular),
             textAlign: TextAlign.center,
           ),
           const SizedBox(
@@ -62,7 +62,7 @@ class _SignInForgotPageState extends State<SignInForgotPage> {
                     return null;
                   },
                   style: const TextStyle(
-                      fontSize: 25.0, height: 2, color: Colors.black),
+                      fontSize: 18, height: 2, color: Colors.black),
                   decoration: InputDecoration(
                       enabledBorder: UnderlineInputBorder(
                           borderRadius: BorderRadius.circular(15)),
@@ -72,17 +72,17 @@ class _SignInForgotPageState extends State<SignInForgotPage> {
                           const EdgeInsets.only(left: 40, bottom: 10, top: 8),
                       filled: true,
                       fillColor: greenLightColor,
-                      hintText: 'Masukkan E-mailmu'),
+                      hintText: 'Masukkan Nomor WhatsApp'),
                   // scrollPadding: EdgeInsets.all(8.0),
                   // cursorRadius: Radius.circular(15),
                 ),
 
                 const SizedBox(
-                  height: 360,
+                  height: 325,
                 ),
                 // buat button dengan CustomFilledButton
                 CustomFilledButton(
-                  title: "Cek E-mail",
+                  title: "Cek WhatsApp",
                   onPressed: () {
                     Navigator.pushNamed(context, '/signinreset');
                   },

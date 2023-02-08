@@ -54,14 +54,14 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
                   //infinity agar responsive
                   height: double.infinity,
                   // width: 200,
-                  fit: BoxFit.fitHeight,
+                  fit: BoxFit.contain,
                 ),
 
                 SvgPicture.asset(
                   'assets/img_splash2.svg',
                   //infinity agar responsive
                   height: double.infinity,
-                  fit: BoxFit.fitHeight,
+                  fit: BoxFit.contain,
                   // width: 200,
                 ),
 
@@ -69,14 +69,14 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
                   'assets/img_splash3.svg',
                   //infinity agar responsive
                   height: double.infinity,
-                  fit: BoxFit.fitHeight,
+                  fit: BoxFit.contain,
                   // width: 200,
                 ),
                 // Image.asset('assets/img_splash1.png'),
               ],
               //carousel opsi pengaturan carousel
               options: CarouselOptions(
-                height: 493,
+                height: 380,
                 viewportFraction: 1,
                 enableInfiniteScroll: false,
                 onPageChanged: (index, reason) {
@@ -91,14 +91,14 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
             ),
             // pembatas dengan sizebox
             const SizedBox(
-              height: 65,
+              height: 50,
             ),
             //container untuk menampung data
             Container(
               //margin horizontal
-              margin: const EdgeInsets.symmetric(horizontal: 30),
+              margin: const EdgeInsets.symmetric(horizontal: 26),
               //padding di dalam container
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 50),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 30),
               //dekorasi dari container
               decoration: BoxDecoration(
                   color: greenLightColor,
@@ -110,24 +110,24 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
                   Text(
                     titles[currentIndex],
                     style: blackHeaderStyle.copyWith(
-                        fontSize: 50, fontWeight: FontWeight.bold),
+                        fontSize: 36, fontWeight: FontWeight.bold),
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(
-                    height: 20,
+                    height: 15,
                   ),
                   // teks deskripsi
                   Text(subtitles[currentIndex],
                       style: blackBodyStyle.copyWith(
-                          fontSize: 25, fontWeight: regular),
+                          fontSize: 20, fontWeight: regular),
                       textAlign: TextAlign.center),
                   const SizedBox(
                     height: 50,
                   ),
                   // section button
                   SizedBox(
-                    height: 70,
-                    width: 300,
+                    height: 55,
+                    width: 158,
                     child: TextButton(
                       onPressed: () {
                         // apabila current index = 2 maka akan masuk ke halaman sign in
@@ -145,7 +145,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
                       // teks button berdasarkan indeks
                       child: Text(
                         buttonText[currentIndex],
-                        style: whiteButtonStyle.copyWith(fontSize: 30),
+                        style: whiteButtonStyle.copyWith(fontSize: 20),
                       ),
                     ),
                   ),
@@ -157,8 +157,8 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                        width: 11,
-                        height: 11,
+                        width: 8,
+                        height: 8,
                         margin: const EdgeInsets.only(right: 10),
                         decoration: BoxDecoration(
                           // circle slider
@@ -169,8 +169,8 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
                         ),
                       ),
                       Container(
-                        width: 11,
-                        height: 11,
+                        width: 8,
+                        height: 8,
                         margin: const EdgeInsets.only(right: 10),
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
@@ -180,8 +180,8 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
                         ),
                       ),
                       Container(
-                        width: 11,
-                        height: 11,
+                        width: 8,
+                        height: 8,
                         margin: const EdgeInsets.only(right: 10),
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,

@@ -21,29 +21,29 @@ class _SignInResetPageState extends State<SignInResetPage> {
       // buat layout listview agar mudah atur vertikal fitur
       body: ListView(
         padding:
-            const EdgeInsets.only(left: 60, right: 60, top: 120, bottom: 48),
+            const EdgeInsets.only(left: 47, right: 47, top: 80, bottom: 50),
         children: [
           // header gambar
           SvgPicture.asset(
             'assets/img_reset.svg',
-            width: 350,
+            width: 280,
           ),
           const SizedBox(
-            height: 50,
+            height: 20,
           ),
           Text(
             // teks header
             'Ubah Kata Sandi',
-            style: blackHeaderStyle.copyWith(fontSize: 50, fontWeight: bold),
+            style: blackHeaderStyle.copyWith(fontSize: 36, fontWeight: bold),
             textAlign: TextAlign.center,
           ),
           const SizedBox(
-            height: 10,
+            height: 11,
           ),
           // teks deskripsi
           Text(
             'Jangan khawatir! Kami akan bantu memulihkan akunmu.',
-            style: blackBodyStyle.copyWith(fontSize: 25, fontWeight: regular),
+            style: blackBodyStyle.copyWith(fontSize: 20, fontWeight: regular),
             textAlign: TextAlign.center,
           ),
           const SizedBox(
@@ -58,7 +58,7 @@ class _SignInResetPageState extends State<SignInResetPage> {
                 // NOTE: password input
                 TextFormField(
                   style: const TextStyle(
-                      fontSize: 25.0, height: 2, color: Colors.black),
+                      fontSize: 18, height: 2, color: Colors.black),
                   decoration: InputDecoration(
                     enabledBorder: UnderlineInputBorder(
                         borderRadius: BorderRadius.circular(15)),
@@ -75,8 +75,8 @@ class _SignInResetPageState extends State<SignInResetPage> {
                             ? 'assets/ic_eye_close.svg'
                             : 'assets/ic_eye_open.svg',
                         // color: Colors.grey,
-                        height: 25,
-                        width: 25,
+                        height: 20,
+                        width: 20,
                       ),
                       onPressed: () {
                         setState(() {
@@ -88,11 +88,11 @@ class _SignInResetPageState extends State<SignInResetPage> {
                   obscureText: _obscureText,
                 ),
                 const SizedBox(
-                  height: 25,
+                  height: 20,
                 ),
                 TextFormField(
                   style: const TextStyle(
-                      fontSize: 25.0, height: 2, color: Colors.black),
+                      fontSize: 18, height: 2, color: Colors.black),
                   decoration: InputDecoration(
                     enabledBorder: UnderlineInputBorder(
                         borderRadius: BorderRadius.circular(15)),
@@ -109,8 +109,8 @@ class _SignInResetPageState extends State<SignInResetPage> {
                             ? 'assets/ic_eye_close.svg'
                             : 'assets/ic_eye_open.svg',
                         // color: Colors.grey,
-                        height: 25,
-                        width: 25,
+                        height: 20,
+                        width: 20,
                       ),
                       onPressed: () {
                         setState(() {
@@ -125,7 +125,7 @@ class _SignInResetPageState extends State<SignInResetPage> {
                 ),
 
                 const SizedBox(
-                  height: 280,
+                  height: 260,
                 ),
                 // buat button dengan CustomFilledButton
                 CustomFilledButton(

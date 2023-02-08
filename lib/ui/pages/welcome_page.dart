@@ -35,34 +35,34 @@ class _WelcomePageState extends State<WelcomePage> {
           child: Column(
             children: [
               const SizedBox(
-                height: 450,
+                height: 306,
               ),
               SvgPicture.asset(
                 'assets/img_logo.svg',
-                height: 100,
-                width: 250,
+                height: 72,
+                width: 194,
               ),
               const SizedBox(
-                height: 430,
+                height: 400,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
                     'assets/img_yasma.png',
-                    height: 40,
+                    height: 30,
                   ),
                   const SizedBox(
-                    width: 20,
+                    width: 10,
                   ),
                   SvgPicture.asset(
                     'assets/img_serambi.svg',
-                    height: 40,
+                    height: 30,
                   ),
                 ],
               ),
               const SizedBox(
-                height: 15,
+                height: 10,
               ),
               const Text('2023 \u00a9 Masjid Syuhada Yogyakarta')
             ],
