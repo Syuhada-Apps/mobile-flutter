@@ -36,167 +36,179 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
 
   @override
   Widget build(BuildContext context) {
+    //variable tinggi layar
+    double screenHeight = MediaQuery.of(context).size.height;
     //hide status bar
     // SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
     return Scaffold(
       //atur warna background
       backgroundColor: whiteColor,
-      body: Center(
-        child: Column(
-          //atur center agar rapi
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            CarouselSlider(
-              //bisa pakai svg dan img disini
-              items: [
-                SvgPicture.asset(
-                  'assets/img_splash1.svg',
-                  //infinity agar responsive
-                  height: double.infinity,
-                  // width: 200,
-                  fit: BoxFit.contain,
-                ),
-
-                SvgPicture.asset(
-                  'assets/img_splash2.svg',
-                  //infinity agar responsive
-                  height: double.infinity,
-                  fit: BoxFit.contain,
-                  // width: 200,
-                ),
-
-                SvgPicture.asset(
-                  'assets/img_splash3.svg',
-                  //infinity agar responsive
-                  height: double.infinity,
-                  fit: BoxFit.contain,
-                  // width: 200,
-                ),
-                // Image.asset('assets/img_splash1.png'),
-              ],
-              //carousel opsi pengaturan carousel
-              options: CarouselOptions(
-                height: 380,
-                viewportFraction: 1,
-                enableInfiniteScroll: false,
-                onPageChanged: (index, reason) {
-                  //set untuk index
-                  setState(() {
-                    currentIndex = index;
-                  });
-                },
+      body: ListView(
+        shrinkWrap: true,
+        //atur center agar rapi
+        // mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          CarouselSlider(
+            //bisa pakai svg dan img disini
+            items: [
+              SplashImage(
+                screenHeight: screenHeight,
+                dirImg: 'assets/img_splash1.svg',
               ),
-              // panggil controller
-              carouselController: carouselController,
+              SplashImage(
+                screenHeight: screenHeight,
+                dirImg: 'assets/img_splash2.svg',
+              ),
+              SplashImage(
+                screenHeight: screenHeight,
+                dirImg: 'assets/img_splash3.svg',
+              ),
+            ],
+            //carousel opsi pengaturan carousel
+            options: CarouselOptions(
+              height: screenHeight * 0.5,
+              viewportFraction: 1,
+              enableInfiniteScroll: false,
+              onPageChanged: (index, reason) {
+                //set untuk index
+                setState(() {
+                  currentIndex = index;
+                });
+              },
             ),
-            // pembatas dengan sizebox
-            const SizedBox(
-              height: 50,
-            ),
-            //container untuk menampung data
-            Container(
-              //margin horizontal
-              margin: const EdgeInsets.symmetric(horizontal: 26),
-              //padding di dalam container
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 30),
-              //dekorasi dari container
-              decoration: BoxDecoration(
-                  color: greenLightColor,
-                  borderRadius: BorderRadius.circular(15)),
-              //buat kolom untuk menampung text, deskripsi dan button ke arah bawah
-              child: Column(
-                children: [
-                  // teks header
-                  Text(
-                    titles[currentIndex],
-                    style: blackHeaderStyle.copyWith(
-                        fontSize: 36, fontWeight: FontWeight.bold),
-                    textAlign: TextAlign.center,
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  // teks deskripsi
-                  Text(subtitles[currentIndex],
-                      style: blackBodyStyle.copyWith(
-                          fontSize: 20, fontWeight: regular),
-                      textAlign: TextAlign.center),
-                  const SizedBox(
-                    height: 50,
-                  ),
-                  // section button
-                  SizedBox(
-                    height: 55,
-                    width: 158,
-                    child: TextButton(
-                      onPressed: () {
-                        // apabila current index = 2 maka akan masuk ke halaman sign in
-                        currentIndex == 2
-                            ? Navigator.pushNamedAndRemoveUntil(
-                                context, '/signin', (route) => false)
-                            : carouselController.nextPage();
-                      },
-                      // atur syle button
-                      style: TextButton.styleFrom(
-                        backgroundColor: greenDarkColor,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15)),
-                      ),
-                      // teks button berdasarkan indeks
-                      child: Text(
-                        buttonText[currentIndex],
-                        style: whiteButtonStyle.copyWith(fontSize: 20),
-                      ),
+            // panggil controller
+            carouselController: carouselController,
+          ),
+          // pembatas dengan sizebox
+          SizedBox(
+            height: screenHeight * 0.01,
+          ),
+          //container untuk menampung data
+          Container(
+            //margin horizontal
+            margin: const EdgeInsets.symmetric(horizontal: 26),
+            //padding di dalam container
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 30),
+            //dekorasi dari container
+            decoration: BoxDecoration(
+                color: greenLightColor,
+                borderRadius: BorderRadius.circular(15)),
+            //buat kolom untuk menampung text, deskripsi dan button ke arah bawah
+            child: Column(
+              children: [
+                // teks header
+                Text(
+                  titles[currentIndex],
+                  style: blackHeaderStyle.copyWith(
+                      fontSize: 36, fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(
+                  height: screenHeight * 0.015,
+                ),
+                // teks deskripsi
+                Text(subtitles[currentIndex],
+                    style: blackBodyStyle.copyWith(
+                        fontSize: 20, fontWeight: regular),
+                    textAlign: TextAlign.center),
+                SizedBox(
+                  height: screenHeight * 0.05,
+                ),
+                // section button
+                SizedBox(
+                  height: 55,
+                  width: 158,
+                  child: TextButton(
+                    onPressed: () {
+                      // apabila current index = 2 maka akan masuk ke halaman sign in
+                      currentIndex == 2
+                          ? Navigator.pushNamedAndRemoveUntil(
+                              context, '/signin', (route) => false)
+                          : carouselController.nextPage();
+                    },
+                    // atur syle button
+                    style: TextButton.styleFrom(
+                      backgroundColor: greenDarkColor,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15)),
+                    ),
+                    // teks button berdasarkan indeks
+                    child: Text(
+                      buttonText[currentIndex],
+                      style: whiteButtonStyle.copyWith(fontSize: 20),
                     ),
                   ),
-                  const SizedBox(
-                    height: 50,
-                  ),
-                  // buat row (ke samping) untuk menampilkan titik slider
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        width: 8,
-                        height: 8,
-                        margin: const EdgeInsets.only(right: 10),
-                        decoration: BoxDecoration(
-                          // circle slider
-                          shape: BoxShape.circle,
-                          color:
-                              // atur warna dengan index
-                              currentIndex == 0 ? greenDarkColor : whiteColor,
-                        ),
-                      ),
-                      Container(
-                        width: 8,
-                        height: 8,
-                        margin: const EdgeInsets.only(right: 10),
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color:
-                              // atur warna dengan index
-                              currentIndex == 1 ? greenDarkColor : whiteColor,
-                        ),
-                      ),
-                      Container(
-                        width: 8,
-                        height: 8,
-                        margin: const EdgeInsets.only(right: 10),
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color:
-                              // atur warna dengan index
-                              currentIndex == 2 ? greenDarkColor : whiteColor,
-                        ),
-                      ),
-                    ],
-                  )
-                ],
-              ),
+                ),
+                SizedBox(
+                  height: screenHeight * 0.05,
+                ),
+                // buat row (ke samping) untuk menampilkan titik slider
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    TitikSlider(
+                      currentIndex: currentIndex,
+                      index: 0,
+                    ),
+                    TitikSlider(
+                      currentIndex: currentIndex,
+                      index: 1,
+                    ),
+                    TitikSlider(
+                      currentIndex: currentIndex,
+                      index: 2,
+                    ),
+                  ],
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class SplashImage extends StatelessWidget {
+  // widget untuk tampilan image di splashscreen
+  const SplashImage(
+      {super.key, required this.screenHeight, required this.dirImg});
+
+  final double screenHeight;
+  final String dirImg;
+
+  @override
+  Widget build(BuildContext context) {
+    return SvgPicture.asset(
+      dirImg,
+      //infinity agar responsive
+      height: screenHeight,
+      // width: 200,
+      fit: BoxFit.contain,
+    );
+  }
+}
+
+class TitikSlider extends StatelessWidget {
+  // widget untuk tampilan titik slider di splashscreen
+  const TitikSlider(
+      {super.key, required this.currentIndex, required this.index});
+
+  final int currentIndex;
+  final int index;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 8,
+      height: 8,
+      margin: const EdgeInsets.only(right: 10),
+      decoration: BoxDecoration(
+        // circle slider
+        shape: BoxShape.circle,
+        color:
+            // atur warna dengan index
+            currentIndex == index ? greenDarkColor : whiteColor,
       ),
     );
   }
