@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:syuhada_apps/shared/theme.dart';
-import 'package:syuhada_apps/ui/widgets/home_services.dart';
+import 'package:syuhada_apps/ui/widgets/home_service.dart';
 import 'package:syuhada_apps/ui/widgets/home_trending.dart';
+import 'package:syuhada_apps/ui/widgets/profile.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -91,33 +92,7 @@ class _HomePageState extends State<HomePage> {
               )
             ],
           ),
-          Container(
-              width: 50,
-              height: 50,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                image: DecorationImage(
-                  image: AssetImage(
-                    'assets/img_profile.png',
-                  ),
-                ),
-              ),
-              child: Align(
-                alignment: Alignment.topRight,
-                child: Container(
-                  width: 16,
-                  height: 16,
-                  decoration:
-                      BoxDecoration(shape: BoxShape.circle, color: whiteColor),
-                  child: Center(
-                    child: Icon(
-                      Icons.check_circle,
-                      color: Colors.green,
-                      size: 14,
-                    ),
-                  ),
-                ),
-              )),
+          Profile(profile: 'assets/img_profile.png')
         ],
       ),
     );
@@ -149,15 +124,17 @@ class _HomePageState extends State<HomePage> {
       margin: EdgeInsets.only(top: 25),
       child: Column(
         children: [
-          HomeServicesItem(
+          HomeServiceItem(
             iconUrl: 'assets/ic_courses.svg',
             title: 'Program Kelas',
-            onTap: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, '/classmenu');
+            },
           ),
-          HomeServicesItem(
+          HomeServiceItem(
             iconUrl: 'assets/ic_mosque.svg',
             title: 'Kajian Syuhada',
-            onTap: () {},
+            onPressed: () {},
           )
         ],
       ),
@@ -285,7 +262,7 @@ class _HomePageState extends State<HomePage> {
           SizedBox(
             height: 20,
           ),
-          Wrap(spacing: 25, runSpacing: 17, children: [
+          Wrap(spacing: 20, runSpacing: 17, children: [
             HomeTrendingItem(
               imageUrl: 'assets/img_trending1.png',
               title: 'TPA Syuhada 2023/2024',

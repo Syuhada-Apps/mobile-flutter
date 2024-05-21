@@ -25,7 +25,7 @@ class HomeTrendingItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 150,
+      width: 155,
       height: 190,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
