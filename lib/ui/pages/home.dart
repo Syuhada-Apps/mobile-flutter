@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:syuhada_apps/shared/theme.dart';
-import 'package:syuhada_apps/ui/widgets/home_services.dart';
+import 'package:syuhada_apps/ui/widgets/home_service.dart';
+import 'package:syuhada_apps/ui/widgets/home_trending.dart';
+import 'package:syuhada_apps/ui/widgets/profile.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -21,11 +23,11 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: whiteColor,
       bottomNavigationBar: Container(
-        color: whiteColor,
+        color: welcomeColor,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+          padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 12),
           child: GNav(
-            backgroundColor: whiteColor,
+            backgroundColor: welcomeColor,
             color: greenDarkColor,
             activeColor: greenDarkColor,
             tabBackgroundColor: greenLightColor,
@@ -62,6 +64,7 @@ class _HomePageState extends State<HomePage> {
           buildSearch(),
           buildServices(),
           buildAds(),
+          buildTrending()
         ],
       ),
     );
@@ -69,7 +72,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget buildProfile() {
     return Container(
-      margin: const EdgeInsets.only(top: 55),
+      margin: const EdgeInsets.only(top: 50),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -89,33 +92,7 @@ class _HomePageState extends State<HomePage> {
               )
             ],
           ),
-          Container(
-              width: 50,
-              height: 50,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                image: DecorationImage(
-                  image: AssetImage(
-                    'assets/img_profile.png',
-                  ),
-                ),
-              ),
-              child: Align(
-                alignment: Alignment.topRight,
-                child: Container(
-                  width: 16,
-                  height: 16,
-                  decoration:
-                      BoxDecoration(shape: BoxShape.circle, color: whiteColor),
-                  child: Center(
-                    child: Icon(
-                      Icons.check_circle,
-                      color: Colors.green,
-                      size: 14,
-                    ),
-                  ),
-                ),
-              )),
+          Profile(profile: 'assets/img_profile.png')
         ],
       ),
     );
@@ -123,11 +100,13 @@ class _HomePageState extends State<HomePage> {
 
   Widget buildSearch() {
     return Container(
-      margin: EdgeInsets.only(top: 25),
+      margin: EdgeInsets.only(top: 20),
       child: TextField(
         decoration: InputDecoration(
           suffixIcon: Icon(Icons.search),
           hintText: 'Ketikkan sesuatu..',
+          filled: true,
+          fillColor: whiteColor,
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(width: 1.5, color: greenDarkColor),
             borderRadius: BorderRadius.circular(15),
@@ -142,18 +121,20 @@ class _HomePageState extends State<HomePage> {
 
   Widget buildServices() {
     return Container(
-      margin: EdgeInsets.only(top: 31),
+      margin: EdgeInsets.only(top: 25),
       child: Column(
         children: [
-          HomeServicesItem(
+          HomeServiceItem(
             iconUrl: 'assets/ic_courses.svg',
             title: 'Program Kelas',
-            onTap: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, '/classmenu');
+            },
           ),
-          HomeServicesItem(
+          HomeServiceItem(
             iconUrl: 'assets/ic_mosque.svg',
             title: 'Kajian Syuhada',
-            onTap: () {},
+            onPressed: () {},
           )
         ],
       ),
@@ -178,7 +159,7 @@ class _HomePageState extends State<HomePage> {
                 ),
 
                 SvgPicture.asset(
-                  'assets/img_carousel1.svg',
+                  'assets/img_carousel2.svg',
                   //infinity agar responsive
                   height: double.infinity,
                   fit: BoxFit.contain,
@@ -186,7 +167,7 @@ class _HomePageState extends State<HomePage> {
                 ),
 
                 SvgPicture.asset(
-                  'assets/img_carousel1.svg',
+                  'assets/img_carousel3.svg',
                   //infinity agar responsive
                   height: double.infinity,
                   fit: BoxFit.contain,
@@ -212,14 +193,14 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             SizedBox(
-              height: 10,
+              height: 15,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  width: 5,
-                  height: 5,
+                  width: 8,
+                  height: 8,
                   margin: const EdgeInsets.only(right: 5),
                   decoration: BoxDecoration(
                     // circle slider
@@ -230,8 +211,8 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 Container(
-                  width: 5,
-                  height: 5,
+                  width: 8,
+                  height: 8,
                   margin: const EdgeInsets.only(right: 5),
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
@@ -241,8 +222,8 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 Container(
-                  width: 5,
-                  height: 5,
+                  width: 8,
+                  height: 8,
                   margin: const EdgeInsets.only(right: 5),
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
@@ -255,6 +236,89 @@ class _HomePageState extends State<HomePage> {
             )
           ],
         ),
+      ),
+    );
+  }
+
+  Widget buildTrending() {
+    return Container(
+      margin: EdgeInsets.only(top: 25, bottom: 30),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Icon(Icons.fiber_new_rounded, color: redColor),
+              SizedBox(
+                width: 10,
+              ),
+              Text(
+                'Trending Sekarang!',
+                style:
+                    blackHeaderStyle.copyWith(fontSize: 20, fontWeight: bold),
+              ),
+            ],
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Wrap(spacing: 20, runSpacing: 17, children: [
+            HomeTrendingItem(
+              imageUrl: 'assets/img_trending1.png',
+              title: 'TPA Syuhada 2023/2024',
+              price: '120000',
+              image: 'assets/img_profile.png',
+              lecturer: 'Ustadz Bayu',
+              types: 'Online',
+              onTap: () {},
+            ),
+            HomeTrendingItem(
+              imageUrl: 'assets/img_trending2.png',
+              title: 'TPA Alam Syuhada',
+              price: '155000',
+              image: 'assets/img_profile.png',
+              lecturer: 'Ustadz Eko',
+              types: 'Offline',
+              onTap: () {},
+            ),
+            HomeTrendingItem(
+              imageUrl: 'assets/img_trending3.png',
+              title: 'Coding For Kids',
+              price: '125000',
+              image: 'assets/img_profile.png',
+              lecturer: 'Ustadz Yusuf',
+              types: 'Online',
+              onTap: () {},
+            ),
+            HomeTrendingItem(
+              imageUrl: 'assets/img_trending4.png',
+              title: 'Kelas Bahasa Inggris',
+              price: '120000',
+              image: 'assets/img_profile.png',
+              lecturer: 'Ustadz Bayu',
+              types: 'Offline',
+              onTap: () {},
+            ),
+            HomeTrendingItem(
+              imageUrl: 'assets/img_trending2.png',
+              title: 'TPA Alam Syuhada',
+              price: '155000',
+              image: 'assets/img_profile.png',
+              lecturer: 'Ustadz Eko',
+              types: 'Offline',
+              onTap: () {},
+            ),
+            HomeTrendingItem(
+              imageUrl: 'assets/img_trending3.png',
+              title: 'Coding For Kids',
+              price: '125000',
+              image: 'assets/img_profile.png',
+              lecturer: 'Ustadz Yusuf',
+              types: 'Online',
+              onTap: () {},
+            ),
+          ])
+        ],
       ),
     );
   }
