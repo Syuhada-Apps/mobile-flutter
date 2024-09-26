@@ -27,46 +27,50 @@ class _WelcomePageState extends State<WelcomePage> {
 
   @override
   Widget build(BuildContext context) {
+    //variable tinggi layar
+    double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-        //warna welcome color khusus disini
-        backgroundColor: welcomeColor,
-        //tambahkan gambar svg
-        body: Center(
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 306,
-              ),
-              SvgPicture.asset(
-                'assets/img_logo.svg',
-                height: 72,
-                width: 194,
-              ),
-              const SizedBox(
-                height: 400,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    'assets/img_yasma.png',
-                    height: 30,
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  SvgPicture.asset(
-                    'assets/img_serambi.svg',
-                    height: 30,
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              const Text('2023 \u00a9 Masjid Syuhada Yogyakarta')
-            ],
-          ),
-        ));
+      //warna welcome color khusus disini
+      backgroundColor: welcomeColor,
+      //tambahkan gambar svg
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(
+              height: screenHeight * 0.3,
+            ),
+            SvgPicture.asset(
+              'assets/img_logo.svg',
+              height: 72,
+            ),
+            SizedBox(
+              height: screenHeight * 0.4,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  'assets/img_yasma.png',
+                  height: 30,
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                SvgPicture.asset(
+                  'assets/img_serambi.svg',
+                  height: 30,
+                ),
+              ],
+            ),
+            SizedBox(
+              height: screenHeight * 0.01,
+            ),
+            const Text('2023 \u00a9 Masjid Syuhada Yogyakarta')
+          ],
+        ),
+      ),
+    );
   }
 }
