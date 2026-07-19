@@ -1,4 +1,4 @@
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:carousel_slider_plus/carousel_slider_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -16,8 +16,11 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int currentIndex = 0;
-  //carousel controller untuk mengatur carousel agar bisa berpindah sesuai index
-  CarouselController carouselController = CarouselController();
+  // Migrasi: CarouselController → CarouselSliderController (carousel_slider_plus)
+  // Diperlukan karena Flutter 3.24+ memperkenalkan CarouselController sendiri
+  // yang menyebabkan konflik nama dengan package carousel_slider lama.
+  CarouselSliderController carouselController = CarouselSliderController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,9 +34,10 @@ class _HomePageState extends State<HomePage> {
             color: greenDarkColor,
             activeColor: greenDarkColor,
             tabBackgroundColor: greenLightColor,
-            padding: EdgeInsets.all(12),
+            padding: const EdgeInsets.all(12),
             gap: 8,
             onTabChange: (value) {
+              // ignore: avoid_print
               print(value);
             },
             tabs: const [
@@ -83,7 +87,7 @@ class _HomePageState extends State<HomePage> {
                 'Assalamu\'alaikum',
                 style: greenBodyStyle.copyWith(fontSize: 18),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
               Text(
@@ -100,10 +104,10 @@ class _HomePageState extends State<HomePage> {
 
   Widget buildSearch() {
     return Container(
-      margin: EdgeInsets.only(top: 20),
+      margin: const EdgeInsets.only(top: 20),
       child: TextField(
         decoration: InputDecoration(
-          suffixIcon: Icon(Icons.search),
+          suffixIcon: const Icon(Icons.search),
           hintText: 'Ketikkan sesuatu..',
           filled: true,
           fillColor: whiteColor,
@@ -121,7 +125,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget buildServices() {
     return Container(
-      margin: EdgeInsets.only(top: 25),
+      margin: const EdgeInsets.only(top: 25),
       child: Column(
         children: [
           HomeServiceItem(
@@ -143,7 +147,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget buildAds() {
     return Container(
-      margin: EdgeInsets.only(top: 15),
+      margin: const EdgeInsets.only(top: 15),
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -154,7 +158,6 @@ class _HomePageState extends State<HomePage> {
                   'assets/img_carousel1.svg',
                   //infinity agar responsive
                   height: double.infinity,
-                  // width: 200,
                   fit: BoxFit.contain,
                 ),
 
@@ -163,7 +166,6 @@ class _HomePageState extends State<HomePage> {
                   //infinity agar responsive
                   height: double.infinity,
                   fit: BoxFit.contain,
-                  // width: 200,
                 ),
 
                 SvgPicture.asset(
@@ -171,16 +173,15 @@ class _HomePageState extends State<HomePage> {
                   //infinity agar responsive
                   height: double.infinity,
                   fit: BoxFit.contain,
-                  // width: 200,
                 ),
-                // Image.asset('assets/img_splash1.png'),
               ],
-              carouselController: carouselController,
+              // Migrasi: property 'carouselController' → 'controller'
+              controller: carouselController,
               options: CarouselOptions(
                 autoPlay: true,
                 aspectRatio: 2.45,
-                autoPlayInterval: Duration(seconds: 5),
-                autoPlayAnimationDuration: Duration(seconds: 2),
+                autoPlayInterval: const Duration(seconds: 5),
+                autoPlayAnimationDuration: const Duration(seconds: 2),
                 autoPlayCurve: Curves.fastOutSlowIn,
                 viewportFraction: 1,
                 enlargeCenterPage: true,
@@ -192,7 +193,7 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             Row(
@@ -242,14 +243,14 @@ class _HomePageState extends State<HomePage> {
 
   Widget buildTrending() {
     return Container(
-      margin: EdgeInsets.only(top: 25, bottom: 30),
+      margin: const EdgeInsets.only(top: 25, bottom: 30),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
               Icon(Icons.fiber_new_rounded, color: redColor),
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
               Text(
@@ -259,7 +260,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Wrap(spacing: 20, runSpacing: 17, children: [

@@ -1,7 +1,7 @@
 class Item {
   final int id;
-  final String first_name;
-  final String last_name;
+  final String firstName;
+  final String lastName;
   final String username;
   final String email;
   final String number;
@@ -12,8 +12,8 @@ class Item {
 
   Item({
     required this.id,
-    required this.first_name,
-    required this.last_name,
+    required this.firstName,
+    required this.lastName,
     required this.username,
     required this.email,
     required this.number,
@@ -26,8 +26,8 @@ class Item {
   factory Item.fromJson(Map<String, dynamic> json) {
     return Item(
       id: json['id'],
-      first_name: json['first_name'],
-      last_name: json['last_name'],
+      firstName: json['first_name'],
+      lastName: json['last_name'],
       username: json['username'],
       email: json['email'],
       number: json['number'],
@@ -40,8 +40,9 @@ class Item {
 
   Map<String, dynamic> toJson() => {
         'id': id,
-        'first_name': last_name,
-        'last_name': last_name,
+        // Fix bug: first_name sebelumnya salah mereferensikan last_name
+        'first_name': firstName,
+        'last_name': lastName,
         'username': username,
         'email': email,
         'number': number,
