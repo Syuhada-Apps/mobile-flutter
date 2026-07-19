@@ -34,19 +34,17 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
-  google_fonts: ^6.2.1
+  google_fonts: ^8.2.0
   flutter_svg: ^2.0.10+1
-  # Migrasi dari carousel_slider ke carousel_slider_plus karena konflik
-  # CarouselController dengan Flutter 3.24+. Gunakan CarouselSliderController.
   carousel_slider_plus: ^7.0.2
   email_validator: ^3.0.0
   get: ^4.6.6
   flutter_launcher_icons: ^0.14.3
-  flutter_otp_text_field: ^2.0.1
+  flutter_otp_text_field: ^1.5.1+1
   retrofit: ^4.9.2
   dio: ^5.9.0
-  json_annotation: ^4.9.0
-  google_nav_bar: ^5.0.6
+  json_annotation: ^4.12.0
+  google_nav_bar: ^5.0.7
 
 dev_dependencies:
   flutter_test:
@@ -57,10 +55,10 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^4.0.0
-  build_runner: ^2.4.13
-  retrofit_generator: ^9.1.7
-  json_serializable: ^6.9.4
+  flutter_lints: ^6.0.0
+  build_runner: ^2.15.1
+  retrofit_generator: ^10.2.7
+  json_serializable: ^6.14.0
 
 flutter_icons:
   android: "launcher_icon"
