@@ -1,4 +1,4 @@
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:carousel_slider_plus/carousel_slider_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:syuhada_apps/shared/theme.dart';
@@ -15,7 +15,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
   //hitung index
   int currentIndex = 0;
   //carousel controller untuk mengatur carousel agar bisa berpindah sesuai index
-  CarouselController carouselController = CarouselController();
+  CarouselSliderController carouselController = CarouselSliderController();
 
   //list judul splash
   List<String> titles = [
@@ -87,7 +87,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
                 },
               ),
               // panggil controller
-              carouselController: carouselController,
+              controller: carouselController,
             ),
             // pembatas dengan sizebox
             const SizedBox(
